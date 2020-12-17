@@ -11,7 +11,17 @@ pathlib.PosixPath = pathlib.WindowsPath
 def label_func(f):
     return f[0]
 
-learn = load_learner(fname="./export.pkl")
+learn = load_learner(fname="./model.pkl")
+
+def preprocess(img):
+    src_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    src_gray = cv2.blur(src_gray, (3,3))
+    src_gray = cv2.equalizeHist(src_gray)  
+    return src_gray
+
+def predict(img):
+    letter,_,probs = learn.predict(preprocess(img))
+    return letter, probs
 
 def translate():
     c = cv2.VideoCapture(0)
@@ -20,14 +30,17 @@ def translate():
     y = 100
     dim = 256
 
-    while True:
+    while c.isOpened():
         ret, frame = c.read()
 
         cv2.rectangle(frame, (x,y),(x+dim, y+dim),(255,0,0),2)
         box = frame[x:x+dim, y:y+dim]
-        letter,_,probs = learn.predict(box)
+        box = cv2.resize(box, (224, 224))
+        letter, p = predict(box)
 
-        cv2.putText(frame, letter, (int(x+dim/2), y+50), cv2.FONT_HERSHEY_SIMPLEX,  
+        if letter.isalpha() and letter.isupper():
+            prob = p[ord(letter) - 65]
+            cv2.putText(frame, letter + ": " + str(prob), (int(x+dim/2), y+dim+50), cv2.FONT_HERSHEY_SIMPLEX,  
                         1, (255, 0, 0), 2, cv2.LINE_AA) 
 
         cv2.imshow('frame', frame)            
@@ -40,7 +53,3 @@ def translate():
     cv2.destroyAllWindows()
 
 translate()
-
-# test_img = cv2.imread("testC.jpg")
-# letter,_,probs = learn.predict(test_img)
-# print(letter)
