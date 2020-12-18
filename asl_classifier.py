@@ -11,9 +11,10 @@ pathlib.PosixPath = pathlib.WindowsPath
 def label_func(f):
     return f[0]
 
-learn = load_learner(fname="./model.pkl")
+learn = load_learner(fname="./model_64x64.pkl")
 
 def preprocess(img):
+    img = cv2.resize(img, (64, 64))
     src_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     src_gray = cv2.blur(src_gray, (3,3))
     src_gray = cv2.equalizeHist(src_gray)  
@@ -35,7 +36,6 @@ def translate():
 
         cv2.rectangle(frame, (x,y),(x+dim, y+dim),(255,0,0),2)
         box = frame[x:x+dim, y:y+dim]
-        box = cv2.resize(box, (224, 224))
         letter, p = predict(box)
 
         if letter.isalpha() and letter.isupper():
