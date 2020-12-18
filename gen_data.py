@@ -1,7 +1,13 @@
 from cv2 import cv2
 import numpy as np
 
-# back_sub = cv2.createBackgroundSubtractorMOG2()
+"""
+    press key of letter that is being photographed
+    e.g. w if ASL sign is w
+    will print DONE after COUNT photos surpassed
+"""
+
+COUNT = 250
 x = 100
 y = 100
 dim = 224
@@ -11,8 +17,6 @@ def process(src):
     src_gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
     cv2.imshow('gray', src_gray)
     return src_gray
-    # equ = cv2.equalizeHist(src_gray)
-    # cv2.imshow('eq', equ)
     
 
 def capture():
@@ -35,7 +39,7 @@ def capture():
             counter += 1
             cv2.imwrite(fname, img)
 
-            if counter >= 250:
+            if counter >= COUNT:
                 print("DONE")
 
     c.release()
