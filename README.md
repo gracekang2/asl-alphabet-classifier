@@ -30,7 +30,7 @@ I tried three different approaches to training a model, all with only the **stat
 
      <img src="https://github.com/gracekang2/asl-alphabet-classifier/blob/master/confusion_3.png" alt="confusion_3" width="400" />
 
-Overall, the model with the best outcome was #2, in terms of accuracy while training and subjective testing with the live feed. All of the training code can be found in train_model.ipynb. 
+Overall, the model with the best outcome was #1, in terms of accuracy while training and subjective testing with the live feed. All of the training code can be found in train_model.ipynb. 
 
 
 
