@@ -1,6 +1,6 @@
 ### Static ASL Alphabet Translation w/ Deep Learning
 
-<img src="C:\Users\grace\Desktop\Files\Projects\asl\DEMO.gif" alt="DEMO" style="zoom:80%;" />
+<img src="https://github.com/gracekang2/asl-alphabet-classifier/blob/master/DEMO.gif" alt="DEMO" style="zoom:80%;" />
 
 Uses OpenCV, deep learning models built with fastai and PyTorch. The actual live feed translation is in asl_classifier.py.
 
@@ -8,9 +8,9 @@ I tried three different approaches to training a model, all with only the **stat
 
 1. Fine-tuning resnet34, with fastai, with a self-generated dataset.
 
-   <img src="C:\Users\grace\Desktop\Files\Projects\asl\loss_1.png" alt="loss_1" style="zoom: 50%;" />
+   <img src="https://github.com/gracekang2/asl-alphabet-classifier/blob/master/loss_1.png" alt="loss_1" style="zoom: 50%;" />
 
-   <img src="C:\Users\grace\Desktop\Files\Projects\asl\confusion_1.png" alt="confusion_1" style="zoom: 50%;" />
+   <img src="https://github.com/gracekang2/asl-alphabet-classifier/blob/master/confusion_1.png" alt="confusion_1" style="zoom: 50%;" />
 
 2. Training a CNN from scratch using PyTorch with 
 
@@ -24,7 +24,7 @@ I tried three different approaches to training a model, all with only the **stat
 
    - Confusion matrix:
 
-     <img src="C:\Users\grace\Desktop\Files\Projects\asl\confusion_2.png" alt="confusion_2" style="zoom: 33%;" />
+     <img src="https://github.com/gracekang2/asl-alphabet-classifier/blob/master/confusion_2.png" alt="confusion_2" style="zoom: 33%;" />
 
 3. Training a CNN from scratch using PyTorch with the self-generated dataset.
 
@@ -32,7 +32,7 @@ I tried three different approaches to training a model, all with only the **stat
 
    - Confusion matrix:
 
-     <img src="C:\Users\grace\Desktop\Files\Projects\asl\confusion_3.png" alt="confusion_3" style="zoom:33%;" />
+     <img src="https://github.com/gracekang2/asl-alphabet-classifier/blob/master/confusion_3.png" alt="confusion_3" style="zoom:33%;" />
 
 Overall, the model with the best outcome was #2, in terms of accuracy while training and subjective testing with the live feed. All of the training code can be found in train_model.ipynb. 
 
