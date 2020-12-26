@@ -4,7 +4,7 @@
 
 Uses OpenCV, deep learning models built with fastai and PyTorch. The actual live feed translation is in asl_classifier.py.
 
-I tried four different approaches to training a model, all with only the **static ASL alphabet signs** (i.e. excluding Z and J):
+I tried three different approaches to training a model, all with only the **static ASL alphabet signs** (i.e. excluding Z and J):
 
 1. Fine-tuning resnet34, with fastai, with a self-generated dataset.
 
