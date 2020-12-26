@@ -4,7 +4,8 @@ import numpy as np
 """
     press key of letter that is being photographed
     e.g. w if ASL sign is w
-    will print DONE after COUNT photos surpassed
+    will print DONE after COUNT photos surpassed.
+    will take dim x dim greyscale image
 """
 
 COUNT = 250
